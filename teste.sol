@@ -134,8 +134,6 @@ contract LotteryHub is ReentrancyGuard {
                 LotteryCreatorFees[FeesAddress] = 0;
 
         comissionsAddress.transfer(reward2Transfer);
-
-        HubOwner = _HubOwner;
   }
 
 }
