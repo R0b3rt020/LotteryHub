@@ -5,7 +5,7 @@ import { currency } from '../constants'
 import { useAddress, useContract, useContractRead, useDisconnect } from '@thirdweb-dev/react'
 
 function Header() {
-  const { contract } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract } = useContract(NEXT_PUBLIC_CONTRACT_ADDRESS);
   const address = useAddress()
   const { data: winnings , isLoading} = useContractRead(contract, "getAddressBalance", address)
   const disconnect = useDisconnect()

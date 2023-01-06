@@ -13,7 +13,7 @@ type Props = {
 
 const LotteryCards: React.FC<Props> = (props) => {
   const { tab } = props;
-  const { contract, isLoading, error } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract, isLoading, error } = useContract(NEXT_PUBLIC_CONTRACT_ADDRESS);
   const address = useAddress()
   const { data: getAllLottery } = useContractRead(contract, "getAllLottery")
   const { mutateAsync: BuyTickets } = useContractWrite(contract, "BuyTickets")

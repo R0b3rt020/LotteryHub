@@ -6,7 +6,7 @@ import { useContract, useContractWrite,useContractRead,useAddress } from '@third
 import toast from 'react-hot-toast'
 
 function AdminControls() {
-    const { contract, isLoading, error } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
+    const { contract, isLoading, error } = useContract(NEXT_PUBLIC_CONTRACT_ADDRESS);
     const address = useAddress()
     const { data: winnings } = useContractRead(contract, "getAddressBalance", address)
     const { mutateAsync: getWinnings } = useContractWrite(contract, "getWinnings")
