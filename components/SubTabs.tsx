@@ -23,6 +23,15 @@ const SubTabs = () => {
   const upcomingLotteries = getAllLottery?.filter((Lottery: { isActive: any; started: boolean; }) => Lottery.isActive && Lottery.started==false).length;
   const expiredLotteries = getAllLottery?.filter((Lottery: { isActive: boolean; }) => Lottery.isActive == false).length;
 
+  if(activeLotteries.length == 0){
+    if(upcomingLotteries.length == 0){
+
+    }
+    else{
+      setTab(2);
+    }
+    
+  }
 
   return (
     <>
