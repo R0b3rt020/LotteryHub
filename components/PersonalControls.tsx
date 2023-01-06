@@ -1,12 +1,12 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { currency } from '../constants'
+import { currency, contractAddress } from '../constants'
 import { StarIcon, CurrencyDollarIcon, ArrowPathIcon, ArrowUturnDownIcon } from "@heroicons/react/24/solid"
 import { useContract, useContractWrite,useContractRead,useAddress } from '@thirdweb-dev/react'
 import toast from 'react-hot-toast'
 
 function AdminControls() {
-    const { contract, isLoading, error } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
+    const { contract, isLoading, error } = useContract(contractAddress);
     const address = useAddress()
     const { data: winnings } = useContractRead(contract, "getAddressBalance", address)
     const { mutateAsync: getWinnings } = useContractWrite(contract, "getWinnings")

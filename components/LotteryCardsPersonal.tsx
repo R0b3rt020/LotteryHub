@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import * as ethers from 'ethers';
 import { useAddress, useContract, useContractWrite,useContractRead } from '@thirdweb-dev/react'
 import Countdowntimer from './CountdownTimer'
-import { currency } from '../constants'
+import { currency, contractAddress } from '../constants'
 import toast from "react-hot-toast";
 import NavButton from "./NavButton"
 
@@ -13,7 +13,7 @@ type Props = {
 
 const LotteryCards: React.FC<Props> = (props) => {
   const { tab } = props;
-  const { contract, isLoading, error } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract, isLoading, error } = useContract(contractAddress);
   const address = useAddress()
   const { data: getAllLotteryFromAddress } = useContractRead(contract, "getAllLotteryFromAddress", address)
   const { data: getAllLottery } = useContractRead(contract, "getAllLottery")

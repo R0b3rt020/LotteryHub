@@ -5,11 +5,12 @@ import AdminControls from "./AdminControls";
 import { useAddress, useContract, useContractRead } from '@thirdweb-dev/react'
 import PersonalControls from "./PersonalControls";
 import LotteryCardsPersonal from "./LotteryCardsPersonal";
+import { contractAddress } from '../constants'
 
 
 const ProfileTabs = () => {
   const [openTab, setOpenTab] = React.useState(1);
-  const { contract, isLoading, error } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract, isLoading, error } = useContract(contractAddress);
   const address = useAddress()
   const { data: isHubOwner } = useContractRead(contract, "HubOwner")
   const [tab, setTab] = useState<number>(1);

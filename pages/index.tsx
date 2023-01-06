@@ -10,10 +10,11 @@ import AdminControls from '../components/AdminControls'
 import {StarIcon, CurrencyDollarIcon, ArrowPathIcon, ArrowUturnDownIcon} from "@heroicons/react/24/solid"
 import Tabs from '../components/Tabs'
 import Footer from '../components/Footer'
+import { contractAddress } from '../constants'
 
 
 const Home: NextPage = () => {
-  const { contract, isLoading, error } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract, isLoading, error } = useContract(contractAddress);
   const address = useAddress()
   const { data: getAllLottery } = useContractRead(contract, "getAllLottery")
   const { data: isHubOwner } = useContractRead(contract, "HubOwner")

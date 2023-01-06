@@ -1,7 +1,7 @@
 import {useContract, useContractWrite } from '@thirdweb-dev/react'
 import { useEffect, useState } from 'react'
 import * as ethers from 'ethers';
-import { currency } from '../constants'
+import { currency, contractAddress } from '../constants'
 import toast from "react-hot-toast";
 import NavButton from "./NavButton"
 
@@ -9,7 +9,7 @@ import NavButton from "./NavButton"
 
 
 function BuyLottery() {
-  const { contract, isLoading: contractLoading, error} = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract, isLoading: contractLoading, error} = useContract(contractAddress);
   const { mutateAsync: newLottery } = useContractWrite(contract, "newLottery");
 
   const [CostPerLottery] = useState(50000000000000000);

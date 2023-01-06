@@ -2,10 +2,11 @@ import React from "react";
 import BuyLottery from './BuyLottery'
 import LotteryCards from './LotteryCards'
 import { useEffect, useState } from 'react'
+import { contractAddress } from '../constants'
 import { useAddress, useContract, useContractWrite,useContractRead } from '@thirdweb-dev/react'
 
 const SubTabs = () => {
-  const { contract, isLoading, error } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract, isLoading, error } = useContract(contractAddress);
   const { data: getAllLottery } = useContractRead(contract, "getAllLottery")
   const [openTab, setOpenTab] = React.useState(1);
   const [tab, setTab] = useState<number>(1);
