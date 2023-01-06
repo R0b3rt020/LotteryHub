@@ -132,7 +132,7 @@ return (
         </div>
 
 
-        <label className='form-label text-left border-[#004337] border p-4'>Fees</label>
+        <label className='form-label text-left border-[#004337] border p-4'>Fees (deducted from total pot)</label>
 
         <div className='grid-cols-2 border-[#004337] border p-4'>
         <button onClick={() => setFees(fees-1)} className='w-5 h-7 rounded bottom-0 right-0 mr-2 mb-1 text-lg bg-[#036756] hover:bg-[#036756] text-white'>-</button>

@@ -107,7 +107,7 @@ Tickets: number[] }) => (
               Ticket price: {ethers.utils.formatEther(lottery?.CostPerTicket.toString())} {currency}
             </div>
           <div className='flex justify-end flex-shrink-0'>
-          {Number(currentTime) > Number(lottery?.Duration.toString()) ?                     <h2 className='text-base text-center animate-pulse'>
+          {Number(currentTime) > Number(lottery?.Duration.toString()) ? <h2 className='text-base text-center animate-pulse'>
                                     Waiting for draw!
                                 </h2> : <NavButton isActive onClick={() => handleBuyTickets(lottery?.LotteryId.toString(), lottery?.CostPerTicket.toString())} title='Buy ticket'  />}
           </div>

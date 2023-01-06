@@ -101,10 +101,16 @@ const ProfileTabs = () => {
                 
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden" } id="link2">
+
                   <LotteryCardsPersonal tab={tab}/>
+
+
                 </div>
                 <div className={openTab === 3 ? "block" : "hidden"} id="link3">
+
                 <LotteryCardsPersonal tab={tab}/>
+
+
                 </div>
               </div>
             </div>

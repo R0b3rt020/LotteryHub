@@ -9,6 +9,7 @@ import { JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useEff
 import AdminControls from '../components/AdminControls'
 import {StarIcon, CurrencyDollarIcon, ArrowPathIcon, ArrowUturnDownIcon} from "@heroicons/react/24/solid"
 import Tabs from '../components/Tabs'
+import Footer from '../components/Footer'
 
 
 const Home: NextPage = () => {
@@ -43,8 +44,9 @@ const Home: NextPage = () => {
      
       
       <Tabs />
-
+      <Footer />
         </div>
+
     )}
 
 
