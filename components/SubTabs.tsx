@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useAddress, useContract, useContractWrite,useContractRead } from '@thirdweb-dev/react'
 
 const SubTabs = () => {
-  const { contract, isLoading, error } = useContract(NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract, isLoading, error } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
   const { data: getAllLottery } = useContractRead(contract, "getAllLottery")
   const [openTab, setOpenTab] = React.useState(1);
   const [tab, setTab] = useState<number>(1);

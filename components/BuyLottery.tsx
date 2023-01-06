@@ -9,7 +9,7 @@ import NavButton from "./NavButton"
 
 
 function BuyLottery() {
-  const { contract, isLoading: contractLoading, error} = useContract(NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract, isLoading: contractLoading, error} = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
   const { mutateAsync: newLottery } = useContractWrite(contract, "newLottery");
 
   const [CostPerLottery] = useState(50000000000000000);

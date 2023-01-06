@@ -25,7 +25,7 @@ function convertSeconds(seconds: number) {
 
 
 function Countdowntimer(number:any) {
-    const { contract } = useContract(NEXT_PUBLIC_CONTRACT_ADDRESS);
+    const { contract } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
     const { data: LotteryById, isLoading: isLoadingExpiration  } = useContractRead(contract, "getLotteryById", number)
     
     console.log("lottery Counter", LotteryById)

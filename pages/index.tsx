@@ -13,7 +13,7 @@ import Footer from '../components/Footer'
 
 
 const Home: NextPage = () => {
-  const { contract, isLoading, error } = useContract(NEXT_PUBLIC_CONTRACT_ADDRESS);
+  const { contract, isLoading, error } = useContract(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
   const address = useAddress()
   const { data: getAllLottery } = useContractRead(contract, "getAllLottery")
   const { data: isHubOwner } = useContractRead(contract, "HubOwner")
