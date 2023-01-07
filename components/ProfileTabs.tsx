@@ -96,9 +96,9 @@ const ProfileTabs = () => {
                     
                   </div>
                 )}
-                <div className="mr-64 ml-64 mt-10">
+
                 <PersonalControls />
-                </div>
+
                 
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden" } id="link2">

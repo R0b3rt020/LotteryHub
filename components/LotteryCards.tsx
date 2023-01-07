@@ -191,7 +191,7 @@ Tickets: number[] }) => (
     else{
     return(
 
-<div id="main" className="grid grid-cols-3 gap-1 justify-evenly">      
+<div id="main" className="grid grid-cols-1 gap-1 justify-evenly sm:grid-cols-3">
 
 {expiredLotteries?.map((lottery: { 
 LotteryId: { toString: () => number }, 
@@ -206,13 +206,13 @@ Tickets: number[] }) => (
     <div className="p-2">
       <div className="p-4 rounded-3xl bg-gray-300">
         <div className="flex items-center justify-b">
-        <h2 className='text-2xl'>Lottery #{lottery?.LotteryId.toString()}</h2>
+        <h2 className='text-2xl sm:text-xl'>Lottery #{lottery?.LotteryId.toString()}</h2>
         </div>
         <div className="text-center mb-4 mt-5">
           
-        <h1 className="font-bold opacity-70">Current lottery pot {ethers.utils.formatEther((Number(lottery?.Tickets.length)* Number(lottery?.CostPerTicket)).toString()).toString()} {currency}</h1>
-          <p className="text-xs opacity-70 mt-2">*Creator fees of {lottery?.Fees.toString()}% will be deducted from the final pot</p>
-          <p className="text-xs opacity-70 mt-2">Max. winnings: {ethers.utils.formatEther((Number(lottery?.MaxTickets)*Number(lottery?.CostPerTicket)).toString()).toString()} - {lottery?.Fees.toString()}% = 
+        <h1 className="font-bold opacity-70 sm:text-lg">Current lottery pot {ethers.utils.formatEther((Number(lottery?.Tickets.length)* Number(lottery?.CostPerTicket)).toString()).toString()} {currency}</h1>
+          <p className="text-xs opacity-70 mt-2 sm:text-sm">*Creator fees of {lottery?.Fees.toString()}% will be deducted from the final pot</p>
+          <p className="text-xs opacity-70 mt-2 sm:text-sm">Max. winnings: {ethers.utils.formatEther((Number(lottery?.MaxTickets)*Number(lottery?.CostPerTicket)).toString()).toString()} - {lottery?.Fees.toString()}% = 
           {ethers.utils.formatEther((Number(lottery?.MaxTickets)*Number(lottery?.CostPerTicket) - ((Number(lottery?.Fees)/100) * Number(lottery?.MaxTickets)*Number(lottery?.CostPerTicket))).toString())} {currency}</p>
         </div>
         
@@ -220,17 +220,17 @@ Tickets: number[] }) => (
         <h3 className="text-center">Amount won: &nbsp;{ethers.utils.formatEther((Number(lottery?.Tickets.length)*Number(lottery?.CostPerTicket) - ((Number(lottery?.Fees)/100) * Number(lottery?.Tickets.length)*Number(lottery?.CostPerTicket))).toString())} {currency}
            </h3>
         <div>
-          <p className="pt-4 text-sm font-bold m-0">Tickets sold {(Number(lottery?.MaxTickets) - Number(lottery?.Tickets.length)).toString()} of {lottery?.MaxTickets.toString()}</p>
+          <p className="pt-4 text-sm font-bold m-0 sm:text-xs">Tickets sold {(Number(lottery?.MaxTickets) - Number(lottery?.Tickets.length)).toString()} of {lottery?.MaxTickets.toString()}</p>
           <div className="w-full h-1 rounded-md overflow-hidden bg-white my-2 mx-0">
             <span className="block h-1 rounded-md bg-green-700" style={{ width: `${(Number(lottery?.Tickets.length)/Number(lottery?.MaxTickets) * 100)}%` }} />
           </div>
-          <p className="text-right m-0 text-sm font-bold">{(Number(lottery?.Tickets.length)/Number(lottery?.MaxTickets) * 100).toFixed(0).toString()}%</p>
+          <p className="text-right m-0 text-sm font-bold sm:text-xs">{(Number(lottery?.Tickets.length)/Number(lottery?.MaxTickets) * 100).toFixed(0).toString()}%</p>
         </div>
 
 
 
-          <div className="pt-4 grid grid-cols-2 gap-4">
-            <div className="text-sm justify-start rounded-lg flex flex-grow-0 py-2 px-4 font-bold text-green-700">
+          <div className="pt-4 grid grid-cols-2 gap-4 sm:grid-cols-2">
+            <div className="text-sm justify-start rounded-lg flex flex-grow-0 py-2 px-4 font-bold text-green-700 sm:text-xs">
                 Ticket price: {ethers.utils.formatEther(lottery?.CostPerTicket.toString())} {currency}
             </div>
           </div>
