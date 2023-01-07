@@ -35,9 +35,5 @@
     .custom-number-input button:focus {
       outline: none !important;
     }
-    @media (max-width: 640px) {
-      .div {
-        margin: 0 !important;
-      }
-    }
+
 }

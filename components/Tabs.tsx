@@ -89,7 +89,7 @@ const Tabs = () => {
                   <SubTabs />
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden" } id="link2">
-                  <div className="mr-32 ml-32">
+                  <div className="lg:mr-32 lg:ml-32">
                   <BuyLottery />
                   </div>
                 </div>
