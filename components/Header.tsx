@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react'
 import NavButton from "./NavButton"
 import * as ethers from 'ethers';
 import { currency, contractAddress } from '../constants'
-import { useAddress, useContract, useContractRead, useDisconnect } from '@thirdweb-dev/react'
+import { useAddress, useContract, useContractRead, useDisconnect, useMetamask } from '@thirdweb-dev/react'
+
 
 function Header() {
   const { contract } = useContract(contractAddress);
+  const connectWithMetamask = useMetamask()
   const address = useAddress()
   const { data: winnings , isLoading} = useContractRead(contract, "getAddressBalance", address)
   const disconnect = useDisconnect()
-  const [balance, setBalance] = useState(0)
-  console.log("winnings", winnings)
-
 
   return (
     <header className='grid grid-cols-2 md:grid-cols-5 justify-between items-center p-5'>
@@ -32,7 +31,15 @@ function Header() {
 
       </div>  
       <div className='flex flex-col ml-auto mr-5'>
-        <NavButton onClick={disconnect} title = 'Logout'/> 
+      {!address && (
+      <button onClick={connectWithMetamask} className='bg-white px-8 py-5 mt-2 rounded-lg shadow-lg font-bold'>
+                Login with MetaMask
+            </button>
+        )}
+        {address && (
+                  <NavButton onClick={disconnect} title = 'Logout'/> 
+        )}
+        
         <span className='md:hidden'>
           
         </span>
