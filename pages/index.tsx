@@ -31,8 +31,6 @@ const Home: NextPage = () => {
 
   if(isLoading) return <Loading />;
 
-  if(!address) return <Login />;
-  console.log("array: ", getAllLottery)
   
   return (
     <div className="bg-[#091B18] min-h-screen ">
