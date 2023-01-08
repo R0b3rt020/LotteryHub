@@ -44,7 +44,7 @@ function Header() {
     </div>
   </div>
 
-  <div className='hidden md:flex md:col-span-3 items-center justify-center rounded-md'>
+  <div className='md:flex md:col-span-3 items-center justify-center rounded-md'>
   </div>  
   <div className='flex flex-col ml-auto mr-5'>
     
