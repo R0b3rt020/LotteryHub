@@ -22,6 +22,10 @@ const FaqModal: React.FC<FaqModalProps> = ({ isOpen, setIsOpen }) => {
       width: '800px',
       height: '400px',
       overflow: 'scroll',
+      maxWidth: '640px',
+      w: 'full',
+      maxW: 'screen-sm',
+      h: 'auto',
     },
   };
 
