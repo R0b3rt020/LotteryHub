@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ethers } from 'ethers'
-import { currency, contractAddress } from '../constants'
+import { currency,contractAddress } from '../constants'
 import { StarIcon, CurrencyDollarIcon, ArrowPathIcon, ArrowUturnDownIcon } from "@heroicons/react/24/solid"
 import { useContract, useContractWrite,useContractRead, useAddress } from '@thirdweb-dev/react'
 import toast from 'react-hot-toast'

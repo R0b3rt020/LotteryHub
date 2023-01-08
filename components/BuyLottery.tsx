@@ -1,7 +1,7 @@
-import {useContract, useContractWrite } from '@thirdweb-dev/react'
+import {useContract, useContractWrite,useAddress,useNetwork,useNetworkMismatch,ChainId,ConnectWallet } from '@thirdweb-dev/react'
 import { useEffect, useState } from 'react'
 import * as ethers from 'ethers';
-import { currency, contractAddress } from '../constants'
+import { currency,contractAddress } from '../constants'
 import toast from "react-hot-toast";
 import NavButton from "./NavButton"
 
@@ -11,7 +11,9 @@ import NavButton from "./NavButton"
 function BuyLottery() {
   const { contract, isLoading: contractLoading, error} = useContract(contractAddress);
   const { mutateAsync: newLottery } = useContractWrite(contract, "newLottery");
-
+  const address = useAddress(); // Get connected wallet address
+  const [, switchNetwork] = useNetwork(); // Switch to desired chain
+  const isMismatched = useNetworkMismatch(); // Detect if user is connected to the wrong network
   const [CostPerLottery] = useState(50000000000000000);
   const [GasLimit] = useState(310000);
   const [pricePerTicket, setPricePerTicket] = useState(0.01);
@@ -35,7 +37,15 @@ function BuyLottery() {
   }, [durationDays,durationHours,durationMinutes]); 
 
 
+
 const handleBuyLottery = async () => {
+
+  if(!address){
+
+    toast.error("Please connect your wallet first")
+    return
+  }
+
   const notification = toast.loading("Creating new lottery...");
   if (pricePerTicket > 0 && pricePerTicket > 0 && maxTickets > 0 && maxTicketsPerAddress > 0 && (durationDays > 0 || durationHours > 0 || durationMinutes > 0)) {
     
@@ -45,6 +55,8 @@ const handleBuyLottery = async () => {
 
 
     try {
+      
+
       const data = await newLottery([
         fees.toString(), 
         ethers.utils.parseEther(pricePerTicket.toString()), 
@@ -55,11 +67,12 @@ const handleBuyLottery = async () => {
           value: CostPerLottery.toString(),
         },
       ]);
-
+    
       console.info("contract call success", data);
       toast.success("New lottery created successfully!",{
         id: notification,
       });
+    
     } catch (err) {
       console.error("contract call failure", err);
       toast.error("Error creating new lottery",{

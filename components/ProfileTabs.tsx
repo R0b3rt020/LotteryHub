@@ -5,7 +5,7 @@ import AdminControls from "./AdminControls";
 import { useAddress, useContract, useContractRead } from '@thirdweb-dev/react'
 import PersonalControls from "./PersonalControls";
 import LotteryCardsPersonal from "./LotteryCardsPersonal";
-import { contractAddress } from '../constants'
+import {contractAddress} from '../constants'
 
 
 const ProfileTabs = () => {
@@ -17,6 +17,7 @@ const ProfileTabs = () => {
 
   return (
     <>
+    {address &&(
       <div className="flex flex-wrap ">
 
         <div className="w-full">
@@ -97,8 +98,21 @@ const ProfileTabs = () => {
                   </div>
                 )}
 
-                <PersonalControls />
-
+                {address && (
+                  <div className='flex justify-center'>
+                    
+                    <PersonalControls />
+                    
+                  </div>
+                )}
+                {!address && (
+                  <div className='flex justify-center'>
+                    
+                    <div>Please connect your wallet first!</div>
+                    
+                  </div>
+                )}
+                
                 
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden" } id="link2">
@@ -118,6 +132,11 @@ const ProfileTabs = () => {
           </div>
         </div>
       </div>
+    )}
+    {!address &&( 
+        <div className="text-white text-center"> Please connect your wallet first!</div>
+
+    )}
     </>
   );
 };

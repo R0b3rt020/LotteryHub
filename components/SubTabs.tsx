@@ -2,8 +2,8 @@ import React from "react";
 import BuyLottery from './BuyLottery'
 import LotteryCards from './LotteryCards'
 import { useEffect, useState } from 'react'
-import { contractAddress } from '../constants'
 import { useAddress, useContract, useContractWrite,useContractRead } from '@thirdweb-dev/react'
+import {contractAddress} from '../constants'
 
 const SubTabs = () => {
   const { contract, isLoading, error } = useContract(contractAddress);
@@ -15,16 +15,13 @@ const SubTabs = () => {
     const fetchData = async () => {
 
       const data = await getAllLottery;
-      
     }
     fetchData()
 
   }, []); 
-  
   const activeLotteries = getAllLottery?.filter((Lottery: { isActive: any; started: any; }) => Lottery.isActive && Lottery.started).length;
   const upcomingLotteries = getAllLottery?.filter((Lottery: { isActive: any; started: boolean; }) => Lottery.isActive && Lottery.started==false).length;
   const expiredLotteries = getAllLottery?.filter((Lottery: { isActive: boolean; }) => Lottery.isActive == false).length;
-
 
 
   return (

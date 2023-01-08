@@ -5,14 +5,13 @@ import AdminControls from "./AdminControls";
 import { useAddress, useContract, useContractRead } from '@thirdweb-dev/react'
 import PersonalControls from "./PersonalControls";
 import ProfileTabs from "./ProfileTabs";
-import { contractAddress } from '../constants'
+import {contractAddress} from '../constants'
 
 
 const Tabs = () => {
   const [openTab, setOpenTab] = React.useState(1);
   const { contract, isLoading, error } = useContract(contractAddress);
   const address = useAddress()
-  const { data: isHubOwner } = useContractRead(contract, "HubOwner")
 
 
   return (
@@ -62,6 +61,7 @@ const Tabs = () => {
                 Create New Lottery
               </a>
             </li>
+            
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
@@ -81,6 +81,7 @@ const Tabs = () => {
                 Profile
               </a>
             </li>
+          
           </ul>
           <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
@@ -89,9 +90,7 @@ const Tabs = () => {
                   <SubTabs />
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden" } id="link2">
-                  
                   <BuyLottery />
-                  
                 </div>
                 <div className={openTab === 3 ? "block" : "hidden"} id="link3">
                 <ProfileTabs />

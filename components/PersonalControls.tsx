@@ -1,6 +1,6 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { currency, contractAddress } from '../constants'
+import { currency,contractAddress } from '../constants'
 import { StarIcon, CurrencyDollarIcon, ArrowPathIcon, ArrowUturnDownIcon } from "@heroicons/react/24/solid"
 import { useContract, useContractWrite,useContractRead,useAddress } from '@thirdweb-dev/react'
 import toast from 'react-hot-toast'
@@ -14,7 +14,6 @@ function AdminControls() {
     
 
     const onWithdrawCommissions = async () =>{
-
         if(winnings <= 0 ){
             const notification = toast.error("No winnings to withdraw...");
             return () => {
@@ -23,6 +22,7 @@ function AdminControls() {
         const notification = toast.loading("Withdrawing comissions...");
         
         try{
+          
           const data = await getWinnings([{}]);
     
           toast.success("Commissions withdrawn sucessfully!",{
