@@ -19,7 +19,6 @@ const FaqModal: React.FC<FaqModalProps> = ({ isOpen, setIsOpen }) => {
       background: '#091B18',
       borderRadius: '20px',
       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-      width: '800px',
       height: '400px',
       overflow: 'scroll',
       maxWidth: '640px',
