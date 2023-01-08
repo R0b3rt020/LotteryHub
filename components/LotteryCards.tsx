@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import * as ethers from 'ethers';
-import { useAddress, useContract, useContractWrite,useContractRead } from '@thirdweb-dev/react'
+import { useAddress, useContract, useContractWrite,useContractRead,useNetworkMismatch } from '@thirdweb-dev/react'
 import Countdowntimer from '../components/CountdownTimer'
 import { currency,contractAddress } from '../constants'
 import toast from "react-hot-toast";
@@ -20,6 +20,7 @@ const LotteryCards: React.FC<Props> = (props) => {
   const { data: isHubOwner } = useContractRead(contract, "HubOwner")
   const [GasLimit] = useState(310000)
   const currentTime = new Date().getTime()/1000;
+  const isMismatched = useNetworkMismatch(); // Detect if user is connected to the wrong network
 
 
   useEffect(()=>{
@@ -37,7 +38,12 @@ const LotteryCards: React.FC<Props> = (props) => {
       toast.error("Please connect your wallet first")
       return
     }
-    
+    if(isMismatched){
+
+      toast.error("Please switch your wallet to BNB testnet")
+      return
+    }
+
     const notification = toast.loading("Buying ticket...");
       contract?.interceptor.overrideNextTransaction(() => ({
         gasLimit: GasLimit,

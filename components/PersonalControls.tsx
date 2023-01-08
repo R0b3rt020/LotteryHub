@@ -2,18 +2,25 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { currency,contractAddress } from '../constants'
 import { StarIcon, CurrencyDollarIcon, ArrowPathIcon, ArrowUturnDownIcon } from "@heroicons/react/24/solid"
-import { useContract, useContractWrite,useContractRead,useAddress } from '@thirdweb-dev/react'
+import { useContract, useContractWrite,useContractRead,useAddress,useNetworkMismatch } from '@thirdweb-dev/react'
 import toast from 'react-hot-toast'
+
 
 function AdminControls() {
     const { contract, isLoading, error } = useContract(contractAddress);
     const address = useAddress()
+    const isMismatched = useNetworkMismatch(); // Detect if user is connected to the wrong network
     const { data: winnings } = useContractRead(contract, "getAddressBalance", address)
     const { mutateAsync: getWinnings } = useContractWrite(contract, "getWinnings")
 
     
 
     const onWithdrawCommissions = async () =>{
+      if(isMismatched){
+        toast.error("Please switch you wallet to BNB testnet")
+        return
+      }
+
         if(winnings <= 0 ){
             const notification = toast.error("No winnings to withdraw...");
             return () => {

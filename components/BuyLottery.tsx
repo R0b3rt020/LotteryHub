@@ -25,6 +25,7 @@ function BuyLottery() {
   const [durationHours, setDurationHours] = useState(0);
   const [durationMinutes, setDurationMinutes] = useState(0);
 
+
   useEffect(() => {
     setDurationDays(1);
     setDurationHours(0);
@@ -43,6 +44,10 @@ const handleBuyLottery = async () => {
   if(!address){
 
     toast.error("Please connect your wallet first")
+    return
+  }
+  if(isMismatched){
+    toast.error("Please switch you wallet to BNB testnet")
     return
   }
 
