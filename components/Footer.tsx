@@ -10,10 +10,10 @@ const Footer = () => {
     <footer className="bg-[#091B18] flex items-center justify-between px-4 py-3">
       <div className="text-sm font-bold text-green-700">
         Follow us on
-        <a href="#" className="ml-2">
+        <a href="https://twitter.com/LottHub_io" className="ml-2">
           <FontAwesomeIcon icon={faTwitter} />
         </a>
-        <a href="#" className="ml-2">
+        <a href="https://t.me/lotteryhub_io" className="ml-2">
           <FontAwesomeIcon icon={faTelegram} />
         </a>
       </div>
