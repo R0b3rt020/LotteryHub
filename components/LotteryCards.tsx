@@ -40,7 +40,7 @@ const LotteryCards: React.FC<Props> = (props) => {
     }
     if(isMismatched){
 
-      toast.error("Please switch your wallet to BNB testnet")
+      toast.error("Please switch you wallet to BSC")
       return
     }
 

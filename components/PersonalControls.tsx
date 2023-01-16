@@ -17,7 +17,7 @@ function AdminControls() {
 
     const onWithdrawCommissions = async () =>{
       if(isMismatched){
-        toast.error("Please switch you wallet to BNB testnet")
+        toast.error("Please switch you wallet to BSC")
         return
       }
 
