@@ -25,7 +25,7 @@ function Header() {
     // Check if the user is connected to the wrong network
     if (isMismatched && switchNetwork) {
       // Prompt their wallet to switch networks
-      switchNetwork(ChainId.BinanceSmartChainTestnet); // the chain you want here
+      switchNetwork(ChainId.BinanceSmartChainMainnet); // the chain you want here
     }
   }, [address]); // This above block gets run every time "address" changes (e.g. when the user connects)
 
