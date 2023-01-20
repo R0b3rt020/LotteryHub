@@ -35,7 +35,7 @@ function Header() {
   <div className="flex items-center space-x-2">
     <img 
       className="h-32 w-32" 
-      src="https://i.ibb.co/BL21qX9/logo.png"
+      src="./logo.png"
       alt="" />
   
     <div>
