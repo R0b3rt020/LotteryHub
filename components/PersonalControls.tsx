@@ -33,9 +33,7 @@ function AdminControls() {
                       
 
         try{
-          contract?.interceptor.overrideNextTransaction(() => ({
-            gasLimit: GasLimit,
-          }));
+
           const data = await getWinnings([{}]);
     
           toast.success("Commissions withdrawn sucessfully!",{
