@@ -12,10 +12,14 @@ function AdminControls() {
     const isMismatched = useNetworkMismatch(); // Detect if user is connected to the wrong network
     const { data: winnings } = useContractRead(contract, "getAddressBalance", address)
     const { mutateAsync: getWinnings } = useContractWrite(contract, "getWinnings")
-
+    const [GasLimit] = useState(310000);
     
 
     const onWithdrawCommissions = async () =>{
+          contract?.interceptor.overrideNextTransaction(() => ({
+      gasLimit: GasLimit,
+    }));
+    
       if(isMismatched){
         toast.error("Please switch you wallet to BSC")
         return
