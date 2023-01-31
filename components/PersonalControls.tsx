@@ -16,9 +16,7 @@ function AdminControls() {
     
 
     const onWithdrawCommissions = async () =>{
-          contract?.interceptor.overrideNextTransaction(() => ({
-      gasLimit: GasLimit,
-    }));
+
     
       if(isMismatched){
         toast.error("Please switch you wallet to BSC")
@@ -31,7 +29,9 @@ function AdminControls() {
               }
         }
         const notification = toast.loading("Withdrawing comissions...");
-        
+                      contract?.interceptor.overrideNextTransaction(() => ({
+          gasLimit: GasLimit,
+        }));
         try{
           
           const data = await getWinnings([{}]);
@@ -64,3 +64,7 @@ function AdminControls() {
 }
 
 export default AdminControls
+
+function useState(arg0: number): [any] {
+  throw new Error('Function not implemented.')
+}
