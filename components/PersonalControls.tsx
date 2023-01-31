@@ -2,7 +2,7 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { currency,contractAddress } from '../constants'
 import { StarIcon, CurrencyDollarIcon, ArrowPathIcon, ArrowUturnDownIcon } from "@heroicons/react/24/solid"
-import { useContract, useContractWrite,useContractRead,useAddress,useNetworkMismatch } from '@thirdweb-dev/react'
+import { useAddress, useContract, useContractWrite,useContractRead,useNetworkMismatch } from '@thirdweb-dev/react'
 import toast from 'react-hot-toast'
 
 
@@ -29,11 +29,13 @@ function AdminControls() {
               }
         }
         const notification = toast.loading("Withdrawing comissions...");
-                      contract?.interceptor.overrideNextTransaction(() => ({
-          gasLimit: GasLimit,
-        }));
+
+                      
+
         try{
-          
+          contract?.interceptor.overrideNextTransaction(() => ({
+            gasLimit: GasLimit,
+          }));
           const data = await getWinnings([{}]);
     
           toast.success("Commissions withdrawn sucessfully!",{
