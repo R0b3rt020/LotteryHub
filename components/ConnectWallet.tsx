@@ -3,7 +3,7 @@ import { ConnectWallet } from "@thirdweb-dev/react";
 <ConnectWallet
   auth={{
     loginOptions: {
-      chainId: 97,
+      chainId: 56,
     },
   }}
 />;
