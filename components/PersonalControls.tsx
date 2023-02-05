@@ -1,25 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ethers } from 'ethers'
 import { currency,contractAddress } from '../constants'
 import { StarIcon, CurrencyDollarIcon, ArrowPathIcon, ArrowUturnDownIcon } from "@heroicons/react/24/solid"
-import { useAddress, useContract, useContractWrite,useContractRead,useNetworkMismatch } from '@thirdweb-dev/react'
+import { useContract, useContractWrite,useContractRead,useAddress,useNetworkMismatch } from '@thirdweb-dev/react'
 import toast from 'react-hot-toast'
 
 
 function AdminControls() {
     const { contract, isLoading, error } = useContract(contractAddress);
     const address = useAddress()
+    const [GasLimit] = useState(310000);
     const isMismatched = useNetworkMismatch(); // Detect if user is connected to the wrong network
     const { data: winnings } = useContractRead(contract, "getAddressBalance", address)
     const { mutateAsync: getWinnings } = useContractWrite(contract, "getWinnings")
-    const [GasLimit] = useState(310000);
+
     
 
     const onWithdrawCommissions = async () =>{
-
-    
       if(isMismatched){
-        toast.error("Please switch you wallet to BSC")
+        toast.error("Please switch you wallet to BNB testnet")
         return
       }
 
@@ -29,11 +28,11 @@ function AdminControls() {
               }
         }
         const notification = toast.loading("Withdrawing comissions...");
-
-                      
-
+        contract?.interceptor.overrideNextTransaction(() => ({
+          gasLimit: GasLimit,
+        }));
         try{
-
+          
           const data = await getWinnings([{}]);
     
           toast.success("Commissions withdrawn sucessfully!",{
@@ -64,7 +63,3 @@ function AdminControls() {
 }
 
 export default AdminControls
-
-function useState(arg0: number): [any] {
-  throw new Error('Function not implemented.')
-}

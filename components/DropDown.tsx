@@ -52,7 +52,6 @@ export default function DropDown() {
             <path d="M118.886 5.14602V18.5027H121.233V5.14602H118.886Z" fill="#F0B90B"></path>
             <path d="M134.33 14.3812L127.174 5.14602H124.999V18.5027H127.308V9.00038L134.673 18.5027H136.639V5.14602H134.33V14.3812Z" fill="#F0B90B"></path>
         </svg>
-            
         </div>
                 
                 </button>
