@@ -8,9 +8,9 @@ import { useAddress,
   ChainId,
   useNetworkMismatch,
   useNetwork,
-  useChainId
+  useChainId,
+  ConnectWallet
  } from '@thirdweb-dev/react'
-import ConnectWallet from './ConnectWallet'
 import DropDown from './DropDown';
 
 
