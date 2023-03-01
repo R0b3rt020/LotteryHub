@@ -25,13 +25,14 @@ function Header() {
     // Check if the user is connected to the wrong network
     if (isMismatched && switchNetwork) {
       // Prompt their wallet to switch networks
-      switchNetwork(ChainId.BinanceSmartChainMainnet); // the chain you want here
+      switchNetwork(941); // the chain you want here
     }
   }, [address]); // This above block gets run every time "address" changes (e.g. when the user connects)
 
 
   return (
 <header className='grid grid-cols-2 md:grid-cols-5 justify-between items-center p-5 w-full'>
+  
   <div className="flex items-center space-x-2">
     <img 
       className="h-32 w-32" 

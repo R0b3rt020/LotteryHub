@@ -1,2 +1,2 @@
-export const currency: string = "BNB";
-export const contractAddress: string = "0x21378B2c59c30e1DffDd4413612FBF9E5872E4c8";
+export const currency: string = "tPLS";
+export const contractAddress: string = "0x9DF6EF4Aa12C27713f2AFBf4625188801a528273";

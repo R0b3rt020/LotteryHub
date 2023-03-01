@@ -47,7 +47,7 @@ const handleBuyLottery = async () => {
     return
   }
   if(isMismatched){
-    toast.error("Please switch you wallet to BSC")
+    toast.error("Please switch you wallet to PulseChain testnet")
     return
   }
 
