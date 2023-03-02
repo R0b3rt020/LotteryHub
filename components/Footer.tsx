@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import FAQModal from './FAQModal';
+import { contractAddress } from '../constants'
+
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +19,9 @@ const Footer = () => {
           <FontAwesomeIcon icon={faTelegram} />
         </a>
       </div>
+      <div className="text-center text-white text-sm">
+    Smart Contract Address: {contractAddress}
+  </div>
       <div className="text-sm font-bold text-green-700">
       <button onClick={() => setIsOpen(true)}>FAQ</button>
       <FAQModal isOpen={isOpen} setIsOpen={setIsOpen} />
